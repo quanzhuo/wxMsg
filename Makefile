@@ -29,15 +29,18 @@ INCLUDE = ./include
 INSTDIR = ~/Desktop
 
 # Flags for wxWidgets
-WXFLAGS = $(shell wx-config --cxxflags --libs)
+WXINC = $(shell wx-config --cxxflags)
+
+# Libs for wxWidgets
+WXLIBS = $(shell wx-config --libs)
 
 all: wxMsg
 
 wxMsg: src/wxMsgFrame.o src/wxMsgApp.o 
-	$(CC) -I$(INCLUDE) -o $@   $(WXFLAGS) $^
+	$(CC) -I$(INCLUDE) -o $@  $^ $(WXLIBS)
 	
 .cc.o:
-	$(CC) -I$(INCLUDE) -c $(@D)/$(<F) -o $(@D)/$(@F) $(WXFLAGS)
+	$(CC) -I$(INCLUDE) $(WXINC) -c $(@D)/$(<F) -o $(@D)/$(@F) 
 		
 .PHONY: clean	
 	
