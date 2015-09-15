@@ -27,5 +27,6 @@
 *.out
 *.app
 
-#tmp files
+#tmp files and the output file
 *~
+wxMsg
