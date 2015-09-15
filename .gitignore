@@ -30,3 +30,10 @@
 #tmp files and the output file
 *~
 wxMsg
+
+# Windows Debug and release files
+Debug
+Release
+*.sdf
+*.opensdf
+*.suo

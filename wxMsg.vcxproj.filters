@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Code">
+      <UniqueIdentifier>{f6e782ea-4773-4be0-9c4a-d27157974129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{a6fa1023-e77c-45ca-a8b2-0431a4b7ec65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\wxMsgApp.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wxMsgFrame.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\wxMsgApp.cc">
+      <Filter>Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wxMsgFrame.cc">
+      <Filter>Source Code</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
