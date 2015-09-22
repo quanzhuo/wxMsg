@@ -34,13 +34,16 @@ WXINC = $(shell wx-config --cxxflags)
 # Libs for wxWidgets
 WXLIBS = $(shell wx-config --libs)
 
+# Compile options
+CFLAGS = -Wno-deprecated-declarations
+
 all: wxMsg
 
 wxMsg: src/wxMsgFrame.o src/wxMsgApp.o 
 	$(CC) -I$(INCLUDE) -o $@  $^ $(WXLIBS)
 	
 .cc.o:
-	$(CC) -w -I$(INCLUDE) $(WXINC) -c $(@D)/$(<F) -o $(@D)/$(@F) 
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(WXINC) -c $(@D)/$(<F) -o $(@D)/$(@F) 
 		
 .PHONY: clean	
 	
