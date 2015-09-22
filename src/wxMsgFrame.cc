@@ -54,7 +54,34 @@ wxMsgFrame::wxMsgFrame(const wxString &title,
 	// create a status bar
 	CreateStatusBar();
 	SetStatusText("wxMsg");
-}                       
+}             
+
+wxMsgFrame::wxMsgFrame(const wxString &title,
+                       const wxPoint &postion,
+                       const wxSize &size,
+                       long style)
+:wxFrame(NULL, wxID_ANY, title, postion, size, style)
+{
+	// create a file menu
+	wxMenu *file = new wxMenu;
+	file->Append(wxID_EXIT);
+	
+	// create a about menu
+	wxMenu *about = new wxMenu;
+	about->Append(wxID_ABOUT);
+	
+	// new a menu bar to place the menu
+	wxMenuBar *menuBar = new wxMenuBar;
+	menuBar->Append(file, "&File");
+	menuBar->Append(about, "&About");
+	
+	// place the menu bar 
+	SetMenuBar(menuBar);
+	
+	// create a status bar
+	CreateStatusBar();
+	SetStatusText("wxMsg");
+}                                 
 
 void wxMsgFrame::OnExit(wxCommandEvent &event)
 {

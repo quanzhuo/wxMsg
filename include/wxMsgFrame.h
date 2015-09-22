@@ -33,11 +33,27 @@
 	#include "wx/wx.h"
 #endif
 
+// Custom style for wxMsgFrame
+#define   WXMSGFRAME_STYPE       \
+          wxSYSTEM_MENU |     \
+          wxRESIZE_BORDER |   \
+          wxMINIMIZE_BOX |    \
+          wxCLOSE_BOX |       \
+          wxCAPTION |         \
+          wxCLIP_CHILDREN
+
 class wxMsgFrame: public wxFrame
 {
 public:
-	wxMsgFrame(const wxString &title, const wxPoint &pos = wxDefaultPosition,
+	wxMsgFrame(const wxString &title, 
+	           const wxPoint &pos = wxDefaultPosition,
 	           const wxSize &size = wxDefaultSize);
+	           
+  // Use this constructor to custom the frame
+	wxMsgFrame(const wxString &title, 
+	           const wxPoint &pos,    
+	           const wxSize &size,
+	           long style);
 
 private:
 	void OnAbout(wxCommandEvent &event);

@@ -24,7 +24,7 @@
 
 #include "wxMsgApp.h"
 #include "wxMsgFrame.h"
-
+          
 // implements MyApp& GetApp()
 wxDECLARE_APP(wxMsgApp);
 
@@ -33,7 +33,9 @@ wxIMPLEMENT_APP(wxMsgApp);
 
 bool wxMsgApp::OnInit()
 {
-	wxMsgFrame *frame = new wxMsgFrame("wxMsg");
+	const wxSize size(240, 520);
+	wxMsgFrame *frame = new wxMsgFrame("wxMsg", wxDefaultPosition, 
+	                                   size, WXMSGFRAME_STYPE);
 	frame->Show(true);
 	return true;
 }
