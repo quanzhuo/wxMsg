@@ -40,7 +40,7 @@ wxMsg: src/wxMsgFrame.o src/wxMsgApp.o
 	$(CC) -I$(INCLUDE) -o $@  $^ $(WXLIBS)
 	
 .cc.o:
-	$(CC) -I$(INCLUDE) $(WXINC) -c $(@D)/$(<F) -o $(@D)/$(@F) 
+	$(CC) -w -I$(INCLUDE) $(WXINC) -c $(@D)/$(<F) -o $(@D)/$(@F) 
 		
 .PHONY: clean	
 	
