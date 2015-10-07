@@ -37,9 +37,12 @@ WXLIBS = $(shell wx-config --libs)
 # Compile options
 CFLAGS = -Wno-deprecated-declarations
 
+# All the object files
+OBJECTS := $(patsubst %.cc, %.o, $(wildcard src/*.cc))
+
 all: wxMsg
 
-wxMsg: src/wxMsgFrame.o src/wxMsgApp.o 
+wxMsg: $(OBJECTS) 
 	$(CC) -I$(INCLUDE) -o $@  $^ $(WXLIBS)
 	
 .cc.o:
