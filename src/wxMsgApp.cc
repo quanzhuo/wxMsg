@@ -37,5 +37,6 @@ bool wxMsgApp::OnInit()
 	wxMsgFrame *frame = new wxMsgFrame("wxMsg", wxDefaultPosition, 
 	                                   size, WXMSGFRAME_STYPE);
 	frame->Show(true);
+	frame->Centre();
 	return true;
 }
