@@ -39,4 +39,9 @@ public:
 	virtual bool OnInit();
 };
 
+// declare wxMsgApp& wxGetApp(). You can then call the function wxGetApp(), 
+// which returns a reference to the wxMsgApp object. This function doesn't 
+// exist in wxWidgets but it is created by using the wxIMPLEMENT_APP() macro.
+wxDECLARE_APP(wxMsgApp);
+
 #endif
