@@ -38,21 +38,27 @@ WXLIBS = $(shell wx-config --libs)
 CFLAGS = -Wno-deprecated-declarations
 
 # All the object files
-OBJECTS := $(patsubst %.cc, %.o, $(wildcard src/*.cc))
+OBJECTS := $(patsubst src%.cc, build%.o, $(wildcard src/*.cc))
 
 all: wxMsg
 
-wxMsg: $(OBJECTS) 
-	$(CC) -I$(INCLUDE) -o $@  $^ $(WXLIBS)
+wxMsg: outdir $(OBJECTS) 
+	$(CC) -I$(INCLUDE) -o $@  $(OBJECTS) $(WXLIBS)
 	
-.cc.o:
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(WXINC) -c $(@D)/$(<F) -o $(@D)/$(@F) 
+build/%.o: src/%.cc
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(WXINC) -c $^ -o $@ 
 		
 .PHONY: clean	
 	
 clean:
-	-rm -rf src/*.o
+	-rm -rf build
 	-rm -rf wxMsg
+	
+outdir:
+	@if [ ! -d build ]; \
+	  then \
+	  mkdir build ; \
+	fi
 	
 install: wxMsg
 	@if [ -d $(INSTDIR)	]; \
