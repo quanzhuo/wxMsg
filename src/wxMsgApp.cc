@@ -24,9 +24,6 @@
 
 #include "wxMsgApp.h"
 #include "wxMsgFrame.h"
-          
-// implements MyApp& GetApp()
-wxDECLARE_APP(wxMsgApp);
 
 // tell wxWidgets to create a wxMsgApp object 
 wxIMPLEMENT_APP(wxMsgApp);
