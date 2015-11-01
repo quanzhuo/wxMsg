@@ -23,11 +23,17 @@
 
 
 #include "wxMsgFrame.h"
+#include "wxMsgChatDlg.h"
+
+enum{
+	wxID_BUTTON
+};
 
 // add event table for wxMsgFrame
 wxBEGIN_EVENT_TABLE(wxMsgFrame, wxFrame)
 	EVT_MENU(wxID_EXIT, wxMsgFrame::OnExit)
 	EVT_MENU(wxID_ABOUT, wxMsgFrame::OnAbout)
+	EVT_BUTTON(wxID_BUTTON, wxMsgFrame::OnButton)
 wxEND_EVENT_TABLE()
 
 wxMsgFrame::wxMsgFrame(const wxString &title, 
@@ -81,6 +87,15 @@ wxMsgFrame::wxMsgFrame(const wxString &title,
 	// create a status bar
 	CreateStatusBar();
 	SetStatusText("wxMsg");
+		
+	// add a wxPanel as a container
+	wxPanel *panel = new wxPanel(this);
+	wxButton * button = new wxButton(panel, wxID_BUTTON, "click me");
+	wxBoxSizer *topSizer = new wxBoxSizer(wxVERTICAL);
+	topSizer->AddStretchSpacer(1);
+	topSizer->Add(button, 0, wxALIGN_CENTER, 5);
+	topSizer->AddStretchSpacer(1);
+	panel->SetSizer(topSizer);
 }                                 
 
 void wxMsgFrame::OnExit(wxCommandEvent &event)
@@ -91,4 +106,9 @@ void wxMsgFrame::OnExit(wxCommandEvent &event)
 void wxMsgFrame::OnAbout(wxCommandEvent &event)
 {
 
+}
+
+void wxMsgFrame::OnButton(wxCommandEvent &event){
+	wxDialog *dlg = new wxMsgChatDlg("test");
+	dlg->Show();
 }

@@ -1,8 +1,8 @@
 /*************************************************************************
- * File    : wxMsgFrame.h
+ * File    : wxMsgChatDlg.h
  * Author  : Quan Zhuo <zhuo.quan@outlook.com>
- * Purpose : header for the main frame
- * Created : 2015年09月13日 星期日 19时00分19秒
+ * Purpose : header for the chat dialog
+ * Created : 01/11/2015 09:52:26 
  *   
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -22,8 +22,8 @@
  */
 
 
-#ifndef WXMSGFRAME_H
-#define WXMSGFRAME_H
+#ifndef WXMSG_CHATDIALOG_H
+#define WXMSG_CHATDIALOG_H
 
 // For compilers that support precompilation, includes "wx.h".
 #include "wx/wxprec.h"
@@ -33,7 +33,7 @@
 	#include "wx/wx.h"
 #endif
 
-// Custom style for wxMsgFrame
+// Custom style for wxMsgChatDlg
 #define   WXMSGFRAME_STYPE       \
           wxSYSTEM_MENU |     \
           wxRESIZE_BORDER |   \
@@ -42,23 +42,20 @@
           wxCAPTION |         \
           wxCLIP_CHILDREN
 
-class wxMsgFrame: public wxFrame
+class wxMsgChatDlg: public wxDialog
 {
 public:
-	wxMsgFrame(const wxString &title, 
-	           const wxPoint &pos = wxDefaultPosition,
-	           const wxSize &size = wxDefaultSize);
+	wxMsgChatDlg(const wxString &title);
 	           
   // Use this constructor to custom the frame
-	wxMsgFrame(const wxString &title, 
+	wxMsgChatDlg(const wxString &title, 
 	           const wxPoint &pos,    
 	           const wxSize &size,
 	           long style);
 
 private:
-	void OnAbout(wxCommandEvent &event);
-	void OnExit(wxCommandEvent &event);
-	void OnButton(wxCommandEvent &event);
+  void OnClose(wxCloseEvent &event);
+	
 	
 wxDECLARE_EVENT_TABLE(); 
 };
